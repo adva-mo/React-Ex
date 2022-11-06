@@ -1,0 +1,15 @@
+.Quiz {
+  border: 2px black solid;
+  height: 200px;
+  width: 70%;
+}
+.form {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+input {
+  width: 50%;
+}
