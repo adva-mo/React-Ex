@@ -6,10 +6,9 @@ import "./App.css";
 import Mother from "./components/Mother";
 
 function App() {
-  const data = { title: "A Tale Of 5 Ballons" };
   return (
-    <div className="mother">
-      <Mother title={data.title}></Mother>
+    <div>
+      <Mother title="A Tale Of 5 Ballons"></Mother>
     </div>
   );
 }
