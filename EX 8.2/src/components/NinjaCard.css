@@ -1,0 +1,6 @@
+.ninja-card {
+  background-color: purple;
+}
+.ninja-cards-container {
+  display: flex;
+}

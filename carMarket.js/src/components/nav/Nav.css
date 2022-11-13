@@ -1,0 +1,29 @@
+.nav {
+  background-color: #818081ff;
+  display: flex;
+  height: 3rem;
+  width: 100%;
+  justify-content: center;
+  padding: 0.3rem;
+}
+button {
+  background-color: #b1c4dfff;
+  border: 1px solid #3e4b61ff;
+  border-radius: 7px;
+  margin: 0.3rem;
+  padding: 0.3rem 0.5rem;
+}
+button:hover {
+  color: white;
+  background-color: #3e4b61ff;
+}
+#logo {
+  margin-right: 4rem;
+}
+.content-main-box {
+  background-color: lightblue;
+  height: 100vh;
+}
+.content-main-box h1 {
+  text-align: center;
+}
