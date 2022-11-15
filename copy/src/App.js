@@ -1,23 +1,27 @@
-import { Route, Routes, Navigate } from "react-router-dom";
-
-import React from "react";
-import HomePage from "./pages/HomePage";
-import Products from "./pages/Products";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import ProductDetail from "./components/ProductDetail";
-import MainHeader from "./components/MainHeader";
+import TodoInput from "./components/TodoInput";
+import TodosList from "./components/TodosList";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  const LOCAL = "app.todos";
+
+  useEffect(
+    function storeInLocalStorage() {
+      const storedWins = JSON.parse(localStorage.getItem(LOCAL));
+      console.log(storedWins);
+      if (storedWins) {
+        setTodos(storedWins);
+      }
+    },
+    [setTodos]
+  );
+
   return (
     <div>
-      <MainHeader />
-      <main>
-        <Routes>
-          <Route path="/" element={<Navigate replace to="/welcome" />} />
-          <Route path="/welcome" element={<HomePage />} />
-          <Route path="/products" element={<Products />} />
-        </Routes>
-      </main>
+      <TodoInput todos={todos} setTodos={setTodos} />
+      <TodosList todos={todos} setTodos={setTodos} />
     </div>
   );
 }
