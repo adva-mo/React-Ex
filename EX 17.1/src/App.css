@@ -1,0 +1,15 @@
+.avatars-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.avatar-card {
+  border: 1px solid black;
+}
+a:visited,
+a:hover {
+  color: blue;
+}
+a.active {
+  color: red;
+}
