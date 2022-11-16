@@ -5,11 +5,11 @@
 }
 .avatar-card {
   border: 1px solid black;
+  text-align: center;
 }
-a:visited,
-a:hover {
-  color: blue;
-}
-a.active {
-  color: red;
+.flex-column {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
 }

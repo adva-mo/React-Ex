@@ -1,27 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer } from "react";
+import axios from "axios";
+
+import AvatarCard from "./components/AvatarCard";
+import NewMmember from "./components/NewMmember";
+import { membersReducers } from "./utils/reducers";
+
 import "./App.css";
-import TodoInput from "./components/TodoInput";
-import TodosList from "./components/TodosList";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const LOCAL = "app.todos";
+  const [members, dispatchMembers] = useReducer(membersReducers, null);
 
-  useEffect(
-    function storeInLocalStorage() {
-      const storedWins = JSON.parse(localStorage.getItem(LOCAL));
-      console.log(storedWins);
-      if (storedWins) {
-        setTodos(storedWins);
-      }
-    },
-    [setTodos]
-  );
+  useEffect(() => {
+    getMembers();
+  }, []);
+
+  const getMembers = async () => {
+    try {
+      const response = await axios.get(
+        "https://6374adb348dfab73a4e57943.mockapi.io/membres/"
+      );
+      if (response)
+        dispatchMembers({
+          type: "FETCHED",
+          playload: [...response.data],
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
-      <TodoInput todos={todos} setTodos={setTodos} />
-      <TodosList todos={todos} setTodos={setTodos} />
+      <h1>The Band Members</h1>
+      <NewMmember dispatchMembers={dispatchMembers} />
+      <div className="avatars-container">
+        {members &&
+          members.map((m) => {
+            return (
+              <AvatarCard
+                key={m.id}
+                {...m}
+                members={members}
+                dispatchMembers={dispatchMembers}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 }
