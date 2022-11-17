@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 function Crud({ id, dispatchMembers }) {
-  console.log(id);
+  // console.log(id);
   async function handleDelete(id) {
     try {
       const response = await axios.delete(

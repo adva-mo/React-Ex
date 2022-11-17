@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Delete from "./Delete";
 import formatBirthday from "../utils/utils.js";
+import axios from "axios";
 
 function AvatarCard({
   name,
@@ -15,25 +16,49 @@ function AvatarCard({
   const myForm = useRef("");
 
   const handleEditMember = (e) => {
+    // console.log(e.target.id);
     e.preventDefault();
     if (isEditable) {
       setIsEditable((prev) => !prev);
-      handleSubmit();
+      formData(e.target.id);
     }
     setIsEditable((prev) => !prev);
   };
 
-  const handleSubmit = (e) => {
-    e && e.preventDefault();
+  const formData = (id) => {
     const formData = new FormData(myForm.current);
     const memberData = Object.fromEntries(formData);
-    console.log(memberData);
+    // console.log(memberData);
     myForm.current.reset();
     setIsEditable((prev) => !prev);
-    dispatchMembers({
-      type: "EDIT-MEMBER",
-      playload: { memberdata: memberData, id: "" },
-    });
+    updateUser(id, memberData);
+    // dispatchMembers({
+    //   type: "EDIT-MEMBER",
+    //   playload: { memberdata: memberData, id: id },
+    // });
+  };
+
+  const updateUser = async (id, memberData) => {
+    console.log("put");
+    try {
+      const response = await axios.put(
+        `https://6374adb348dfab73a4e57943.mockapi.io/membres/${id}`,
+        memberData
+      );
+
+      console.log(response);
+      if (!response.data) throw new Error("errrrror");
+      await dispatchMembers({
+        type: "EDIT-MEMBER",
+        playload: { memberdata: memberData, id: id },
+      });
+    } catch {
+      console.log("e");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e && e.preventDefault();
   };
 
   return (

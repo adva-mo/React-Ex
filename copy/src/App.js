@@ -11,7 +11,7 @@ import "../src/components/spinner.css";
 
 function App() {
   const [members, dispatchMembers] = useReducer(membersReducers, null);
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getMembers();
@@ -27,19 +27,19 @@ function App() {
           type: "FETCHED",
           playload: [...response.data],
         });
-      // setIsLoading((PREV) => !PREV);
+      setIsLoading((PREV) => !PREV);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div style={{ height: "100vh" }}>
-      {/* {console.log(members)} */}
+    // style={{ height: "100vh" }
+    <div>
       <h1>The Band Members</h1>
       <NewMmember dispatchMembers={dispatchMembers} />
       <div className="avatars-container">
-        {/* {isLoading && <Spinner />} */}
+        {isLoading && <Spinner />}
         {members &&
           members.map((m) => {
             return (

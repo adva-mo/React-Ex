@@ -28,7 +28,15 @@ export const addMember = (obj, state) => {
 };
 
 export const editMember = ({ id, memberData }, state) => {
-  // console.log(state);
+  return state.map((m) => {
+    if (m.id === id) {
+      return { ...m, ...memberData };
+    } else {
+      return m;
+    }
+  });
+  console.log(id);
+  console.log("edit function");
   console.log(state.find((m) => m.id === id));
-  return state;
+  return [state];
 };
