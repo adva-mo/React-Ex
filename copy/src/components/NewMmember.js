@@ -37,14 +37,14 @@ function NewMmember({ dispatchMembers }) {
           </div>
           <div>
             link to picture:
-            <input name="avatar" type="text"></input>
+            <input name="img" type="text"></input>
           </div>
           <div>
             birthday:
             <input name="birthday" type="text"></input>
           </div>
           <div>
-            plays...:
+            plays:
             <input name="plays" type="text"></input>
           </div>
           <div>

@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-function Crud({ id, dispatchMembers, setUpdateMembers, members }) {
+function Crud({ id, dispatchMembers }) {
+  console.log(id);
   async function handleDelete(id) {
     try {
       const response = await axios.delete(
@@ -18,17 +19,10 @@ function Crud({ id, dispatchMembers, setUpdateMembers, members }) {
     }
   }
 
-  const editMember = ({ target }) => {
-    console.log(target.id);
-  };
-
   return (
     <div className="buttons-container">
       <button onClick={() => handleDelete(id)} id={id}>
         delete
-      </button>
-      <button onClick={editMember} id={id}>
-        edit
       </button>
     </div>
   );
