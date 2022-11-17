@@ -1,0 +1,19 @@
+.avatars-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.avatar-card {
+  border: 1px solid black;
+  text-align: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+}
+.avatar-card input {
+  border: none;
+  outline: none;
+}
