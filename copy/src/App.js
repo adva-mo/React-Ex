@@ -1,59 +1,32 @@
-import React, { useEffect, useReducer, useState } from "react";
-import axios from "axios";
-
-import AvatarCard from "./components/AvatarCard";
-import NewMmember from "./components/NewMmember";
-import { membersReducers } from "./utils/reducers";
-import Spinner from "./components/Spinner";
-
+import React, { Component } from "react";
 import "./App.css";
-import "../src/components/spinner.css";
+
+class Counter extends Component {
+  constructor() {
+    super();
+    this.state = {
+      display: true,
+    };
+  }
+  clickHandler() {
+    console.log("click");
+    this.setState((prev) => {
+      return { display: !prev.display };
+    });
+  }
+
+  render() {
+    return (
+      <div className="main-box">
+        <button onClick={this.clickHandler.bind(this)}>show/hide</button>
+        <div hidden={this.state.display} className="yellow-box"></div>
+      </div>
+    );
+  }
+}
 
 function App() {
-  const [members, dispatchMembers] = useReducer(membersReducers, null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getMembers();
-  }, []);
-
-  const getMembers = async () => {
-    try {
-      const response = await axios.get(
-        "https://6374adb348dfab73a4e57943.mockapi.io/membres/"
-      );
-      if (response)
-        dispatchMembers({
-          type: "FETCHED",
-          playload: [...response.data],
-        });
-      setIsLoading((PREV) => !PREV);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    // style={{ height: "100vh" }
-    <div>
-      <h1>The Band Members</h1>
-      <NewMmember dispatchMembers={dispatchMembers} />
-      <div className="avatars-container">
-        {isLoading && <Spinner />}
-        {members &&
-          members.map((m) => {
-            return (
-              <AvatarCard
-                key={m.id}
-                {...m}
-                members={members}
-                dispatchMembers={dispatchMembers}
-              />
-            );
-          })}
-      </div>
-    </div>
-  );
+  return <Counter />;
 }
 
 export default App;

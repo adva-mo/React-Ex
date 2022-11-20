@@ -1,19 +1,22 @@
-.avatars-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.avatar-card {
-  border: 1px solid black;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
-.flex-column {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: center; */
-  align-items: center;
+.main-box {
+  border: 1px black solid;
+  padding: 1rem;
+  height: 7rem;
 }
-.avatar-card input {
-  border: none;
-  outline: none;
+.yellow-box {
+  background-color: yellow;
+  width: 4rem;
+  height: 4rem;
 }
