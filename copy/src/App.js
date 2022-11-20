@@ -1,32 +1,52 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./App.css";
 
-class Counter extends Component {
+class Todo extends Component {
   constructor() {
     super();
     this.state = {
-      display: true,
+      completed: true,
     };
   }
   clickHandler() {
-    console.log("click");
-    this.setState((prev) => {
-      return { display: !prev.display };
+    console.log("clicked", this.props);
+    this.props.setTodos((prev) => {
+      const newa = prev.splice(
+        (this.props.i,
+        1,
+        {
+          name: this.props.name,
+          completed: !this.props.completed,
+        })
+      );
+      return newa;
     });
   }
-
   render() {
     return (
-      <div className="main-box">
-        <button onClick={this.clickHandler.bind(this)}>show/hide</button>
-        <div hidden={this.state.display} className="yellow-box"></div>
-      </div>
+      <li onClick={this.clickHandler.bind(this)}>
+        {console.log(this.props.completed)}
+        {this.props.name} {this.props.completed ? "ok" : "X"}
+      </li>
     );
   }
 }
 
 function App() {
-  return <Counter />;
+  const [todos, setTodos] = useState([
+    { name: "CSS", completed: true },
+    { name: "JavaScript", completed: true },
+    { name: "Learn React", completed: false },
+    { name: "Learn mongoDB", completed: false },
+    { name: "Learn Node JS", completed: false },
+  ]);
+  return (
+    <ul>
+      {todos.map((todo, i) => {
+        return <Todo key={i} i={i} {...todo} setTodos={setTodos} />;
+      })}
+    </ul>
+  );
 }
 
 export default App;

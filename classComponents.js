@@ -3,7 +3,7 @@
 //! we can combine those aspects, normally we will stick to one method.
 
 //? we can define a class with a render method that defines what to be rerendered:
-//? we cant use hooks in the class components!
+//? we can NOT use hooks in the class components!
 //? we will use only one render method
 //? beacuse we extend component, we can use the props method if attached to this. (referse to the component)
 //? to define state we will use the constrcutor function - the state always is an object!
@@ -16,11 +16,6 @@ class Products extends Component {
     return <li>{this.props.name}</li>;
   }
 }
-//translated from this functional component ->
-
-// const User = () => {
-//   return <li>{props.name}</li>;
-// };
 
 //---------------------------------------
 class User extends Component {
