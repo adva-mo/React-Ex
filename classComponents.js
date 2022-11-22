@@ -49,3 +49,26 @@ class User extends Component {
 //* componenetDidUpdated() -called once the state in the component has changed (was evaluated and rendered) ! !in functional component: useEffect(state)
 //* componenetWillUnmount() called right before the component is unmounted //! functional component: the return of the useeffect
 //*
+
+//* componenetDidUpdated() : we need to add condition to define when this function will execude, if not- will be an infinte loop
+
+// componenetdidUpdate(prevprops,prevState){
+//   if(prevState.serachTerm!==this.state.serachTerm){
+//     this.setState({
+//       filteredUsers: SOME-DATA.filter((user)=>{
+//         user.name.imcludes(this.state.serachTerm)
+//       })
+//     });
+//   }
+// }
+
+//* componenetDidMount() -
+// componentDidMount(){
+//   //send http...
+//   this.setState(filteredUsers)//from a servevr//))
+// }
+
+//* componenetWillUnmount()- execute before the component is removed from the screen
+// componenetWillUnmount(){
+//   console.log("user will unmount");
+// }
