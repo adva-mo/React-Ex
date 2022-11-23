@@ -3,19 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Box from "./Box";
 
-//! ex 13.1
-// function App() {
-//   const [favoriteColor, setfavoriteColor] = useState("blue");
-//   return (
-//     <div>
-//       <h1>my favourite color is {favoriteColor}</h1>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-//! ex 13.1
+//! ex 13.2
 function App() {
   const [isBoxShows, setisBoxShows] = useState(false);
 
